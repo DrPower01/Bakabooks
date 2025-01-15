@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: Bakabooks
+    env: php
+    region: us  # Choose your region
+    buildCommand: |
+      composer install --optimize-autoloader --no-dev
+      php artisan config:cache
+      php artisan route:cache
+      php artisan view:cache
+    startCommand: |
+      php artisan serve --host 0.0.0.0 --port 8000
+    runtime: php
+    envVars:
+      APP_ENV: production
+      APP_KEY: base64:+LNE5HSS83U/shQuPDKB4BaO7o5yPAoiWtqY99v9A2w=
+      APP_DEBUG: false

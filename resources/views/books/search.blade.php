@@ -39,6 +39,11 @@
                     </li>
                 @endforeach
             </ul>
+
+            <!-- Pagination Links -->
+            <div class="mt-4">
+                {{ $books->appends(['query' => $query])->links() }}
+            </div>
         @endif
     </div>
 </x-layout>
