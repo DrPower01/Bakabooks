@@ -12,3 +12,8 @@ RUN php artisan view:cache
 EXPOSE 80
 CMD ["supervisord"]
 
+RUN apt-get update && apt-get install -y \
+    libzip-dev \
+    unzip \
+    && docker-php-ext-install pdo pdo_mysql zip \
+    && docker-php-ext-enable pdo pdo_mysql
